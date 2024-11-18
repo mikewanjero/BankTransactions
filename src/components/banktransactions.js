@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import colors from "../config/colors";
 
 const BankTransferForm = () => {
   const [formData, setFormData] = useState({
@@ -22,64 +23,94 @@ const BankTransferForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form
+      onSubmit={handleSubmit}
+      style={{
+        maxWidth: 500,
+        margin: "auto",
+        marginTop: "17px",
+        padding: "1rem",
+        border: "1px solid #ccc",
+        borderRadius: "8px",
+        backgroundColor: "#debb87",
+      }}
+    >
       <h2>Bank Transfer Application</h2>
-      <label>
-        Amount:
-        <input
-          type="text"
-          name="amount"
-          value={formData.amount}
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        Reference Number:
-        <input
-          type="text"
-          name="referenceNumber"
-          value={formData.referenceNumber}
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        Cheque Number:
-        <input
-          type="text"
-          name="chequeNumber"
-          value={formData.chequeNumber}
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        Bank Name:
+      <label style={{ display: "block", marginBottom: "8px" }}>
+        Bank Name
         <input
           type="text"
           name="bankName"
           value={formData.bankName}
           onChange={handleChange}
+          style={{ width: "100%", marginBottom: "12px" }}
         />
       </label>
-      <label>
-        Banked By:
+      <label style={{ display: "block", marginBottom: "8px" }}>
+        Amount
+        <input
+          type="text"
+          name="amount"
+          value={formData.amount}
+          onChange={handleChange}
+          style={{
+            width: "100%",
+            marginBottom: "12px",
+          }}
+        />
+      </label>
+      <label style={{ display: "block", marginBottom: "8px" }}>
+        Reference Number
+        <input
+          type="text"
+          name="referenceNumber"
+          value={formData.referenceNumber}
+          onChange={handleChange}
+          style={{ width: "100%", marginBottom: "12px" }}
+        />
+      </label>
+      <label style={{ display: "block", marginBottom: "8px" }}>
+        Cheque Number
+        <input
+          type="text"
+          name="chequeNumber"
+          value={formData.chequeNumber}
+          onChange={handleChange}
+          style={{ width: "100%", marginBottom: "12px" }}
+        />
+      </label>
+      <label style={{ display: "block", marginBottom: "8px" }}>
+        Banked By
         <input
           type="text"
           name="bankedBy"
           value={formData.bankedBy}
           onChange={handleChange}
+          style={{ width: "100%", marginBottom: "12px" }}
         />
       </label>
-      <label>
-        Date:
+      <label style={{ display: "block", marginBottom: "8px" }}>
+        Date
         <input
           type="date"
           name="date"
           value={formData.date}
           onChange={handleChange}
           readOnly
+          style={{ width: "100%", marginBottom: "12px" }}
         />
       </label>
-      <button type="submit">Submit</button>
+      <button
+        type="submit"
+        primary={true}
+        style={{
+          backgroundColor: colors.phAMACoreColor1,
+          color: "white",
+          borderRadius: "6px",
+        }}
+      >
+        Submit
+      </button>
     </form>
   );
 };
