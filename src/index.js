@@ -8,7 +8,7 @@ import BankTransferForm from "./components/banktransactions";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <BankTransferForm />
   </React.StrictMode>
 );
 
