@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Button, DatePicker, Input, Label } from "@progress/kendo-react-all";
 import colors from "../config/colors";
 
 const BankTransferForm = () => {
@@ -6,14 +7,18 @@ const BankTransferForm = () => {
     amount: "",
     referenceNumber: "",
     chequeNumber: "",
-    bankName: "", // Change to a text field
+    bankName: "",
     bankedBy: "",
-    date: new Date().toISOString().split("T")[0], // Auto-fill with current date
+    date: null,
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+  };
+
+  const handleDateChange = (e) => {
+    setFormData({ ...formData, date: e.value });
   };
 
   const handleSubmit = (e) => {
@@ -36,19 +41,19 @@ const BankTransferForm = () => {
       }}
     >
       <h2>Bank Transfer Application</h2>
-      <label style={{ display: "block", marginBottom: "8px" }}>
+      <Label style={{ display: "block", marginBottom: "8px" }}>
         Bank Name
-        <input
+        <Input
           type="text"
           name="bankName"
           value={formData.bankName}
           onChange={handleChange}
           style={{ width: "100%", marginBottom: "12px" }}
         />
-      </label>
-      <label style={{ display: "block", marginBottom: "8px" }}>
+      </Label>
+      <Label style={{ display: "block", marginBottom: "8px" }}>
         Amount
-        <input
+        <Input
           type="text"
           name="amount"
           value={formData.amount}
@@ -58,49 +63,55 @@ const BankTransferForm = () => {
             marginBottom: "12px",
           }}
         />
-      </label>
-      <label style={{ display: "block", marginBottom: "8px" }}>
+      </Label>
+      <Label style={{ display: "block", marginBottom: "8px" }}>
         Reference Number
-        <input
+        <Input
           type="text"
           name="referenceNumber"
           value={formData.referenceNumber}
           onChange={handleChange}
           style={{ width: "100%", marginBottom: "12px" }}
         />
-      </label>
-      <label style={{ display: "block", marginBottom: "8px" }}>
+      </Label>
+      <Label style={{ display: "block", marginBottom: "8px" }}>
         Cheque Number
-        <input
+        <Input
           type="text"
           name="chequeNumber"
           value={formData.chequeNumber}
           onChange={handleChange}
           style={{ width: "100%", marginBottom: "12px" }}
         />
-      </label>
-      <label style={{ display: "block", marginBottom: "8px" }}>
+      </Label>
+      <Label style={{ display: "block", marginBottom: "8px" }}>
         Banked By
-        <input
+        <Input
           type="text"
           name="bankedBy"
           value={formData.bankedBy}
           onChange={handleChange}
           style={{ width: "100%", marginBottom: "12px" }}
         />
-      </label>
-      <label style={{ display: "block", marginBottom: "8px" }}>
-        Date
-        <input
+      </Label>
+      <Label
+        editorId="date"
+        editorValid={true}
+        style={{ display: "block", marginBottom: "8px" }}
+      >
+        Date:
+        <DatePicker
           type="date"
           name="date"
+          placeholder="Select date"
           value={formData.date}
-          onChange={handleChange}
-          readOnly
+          onChange={handleDateChange}
           style={{ width: "100%", marginBottom: "12px" }}
+          format="dd-mm-yyyy"
+          formatPlaceholder="date-month-year"
         />
-      </label>
-      <button
+      </Label>
+      <Button
         type="submit"
         primary={true}
         style={{
@@ -110,7 +121,7 @@ const BankTransferForm = () => {
         }}
       >
         Submit
-      </button>
+      </Button>
     </form>
   );
 };
